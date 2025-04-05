@@ -26,14 +26,14 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID = credentials('aws-s3-creds')
         AWS_SECRET_ACCESS_KEY = credentials('aws-s3-creds')
-        BUCKET = 'websitebucket-niks'
+        BUCKET = 'bucketname'
     }
 
     stages {
         stage('Archive Artifacts') {
             steps {
                 // Build and archive
-                sh 'zip -r build.zip *'
+                sh 'zip -r build.zip *'  ==> mention the path instead of *
                 archiveArtifacts artifacts: 'build.zip'
             }
         }
